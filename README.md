@@ -63,7 +63,7 @@ then it runs over the sequence in reverse order to compute the probability of th
 <!-- p \left ( t_{1}, t_{2}, ..., t_{N} \right ) = \prod_{k=1}^{N} p \left ( t_{k} | t_{k+1}, t_{k+2}, ..., t_{N} \right ) -->
 the sequence first goes through a shared embedding layer, then is modeled by multi-layer RNN (e.g. LSTM, GRU, etc.) in both directions and finally softmax normalization is applied to get probabilities,
 <p align="center"><img src="/language_model/document/bilm.architecture.png" width=500></p>
-<center>*Figure 2: bi-directional language model architecture (source: [Generalized Language Models](https://lilianweng.github.io/lil-log/2019/01/31/generalized-language-models.html))*</center><br />
+<center>*Figure 2: bi-directional language model architecture, source: [Generalized Language Models](https://lilianweng.github.io/lil-log/2019/01/31/generalized-language-models.html)*</center><br />
 the model is trained by jointly minimizing the negative log likelihood of the forward and backward directions,
 <p align="center"><img src="/language_model/document/bilm.eqn.loss.gif" width=600><br /></p>
 <!-- L \left ( \Theta \right ) = - \sum_{k=1}^{N} \left ( log p \left ( t_{k} | t_{1}, t_{2}, ..., t_{k-1} ; \Theta_{e}, \overset{ \rightarrow }{ \Theta }_{RNN}, \Theta_{s} \right ) + log p \left ( t_{k} | t_{k+1}, t_{k+2}, ..., t_{N} ; \Theta_{e}, \overset{ \leftarrow }{ \Theta }_{RNN}, \Theta_{s} \right ) \right ) -->
