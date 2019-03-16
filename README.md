@@ -2,7 +2,7 @@
 Language modeling is a task that assigns probabilities to sequences of words or various linguistic units (e.g. char, subword, sentence, etc.). Language modeling is one of the most important problem in modern natural language processing (NLP) and it's used in many NLP applications (e.g. speech recognition, machine translation, text summarization, spell correction, auto-completion, etc.). In the past few years, neural approaches have achieved better results than traditional statistical approaches on many language model benchmarks. Moreover, recent work has shown language model pre-training can improve many NLP tasks in different ways, including feature-based strategies (e.g. ELMo, etc.) and fine-tuning strategies (e.g. OpenAI GPT, BERT, etc.), or even in zero-shot setting (e.g. OpenAI GPT-2, etc.).
 
 <p align="center"><img src="/language_model/document/language_model.example.png" width=600></p>
-<p align="center">*Figure 1: An example of auto-completion powered by language modeling*</p>
+<p align="center"><i>Figure 1: An example of auto-completion powered by language modeling</i></p>
 
 ## Setting
 * Python 3.6.6
@@ -63,7 +63,7 @@ then it runs over the sequence in reverse order to compute the probability of th
 <!-- p \left ( t_{1}, t_{2}, ..., t_{N} \right ) = \prod_{k=1}^{N} p \left ( t_{k} | t_{k+1}, t_{k+2}, ..., t_{N} \right ) -->
 the sequence first goes through a shared embedding layer, then is modeled by multi-layer RNN (e.g. LSTM, GRU, etc.) in both directions and finally softmax normalization is applied to get probabilities,
 <p align="center"><img src="/language_model/document/bilm.architecture.png" width=500></p>
-<p align="center">*Figure 2: bi-directional language model architecture (source: [Generalized Language Models](https://lilianweng.github.io/lil-log/2019/01/31/generalized-language-models.html))*</p>
+<p align="center"><i>Figure 2: bi-directional language model architecture (source: <a href="https://lilianweng.github.io/lil-log/2019/01/31/generalized-language-models.html">Generalized Language Models</a>)</i></p>
 the model is trained by jointly minimizing the negative log likelihood of the forward and backward directions,
 <p align="center"><img src="/language_model/document/bilm.eqn.loss.gif" width=600><br /></p>
 <!-- L \left ( \Theta \right ) = - \sum_{k=1}^{N} \left ( log p \left ( t_{k} | t_{1}, t_{2}, ..., t_{k-1} ; \Theta_{e}, \overset{ \rightarrow }{ \Theta }_{RNN}, \Theta_{s} \right ) + log p \left ( t_{k} | t_{k+1}, t_{k+2}, ..., t_{N} ; \Theta_{e}, \overset{ \leftarrow }{ \Theta }_{RNN}, \Theta_{s} \right ) \right ) -->
