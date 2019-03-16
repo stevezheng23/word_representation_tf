@@ -2,7 +2,7 @@
 Language modeling is a task that assigns probabilities to sequences of words or various linguistic units (e.g. char, subword, sentence, etc.). Language modeling is one of the most important problem in modern natural language processing (NLP) and it's used in many NLP applications (e.g. speech recognition, machine translation, text summarization, spell correction, auto-completion, etc.). In the past few years, neural approaches have achieved better results than traditional statistical approaches on many language model benchmarks. Moreover, recent work has shown language model pre-training can improve many NLP tasks in different ways, including feature-based strategies (e.g. ELMo, etc.) and fine-tuning strategies (e.g. OpenAI GPT, BERT, etc.), or even in zero-shot setting (e.g. OpenAI GPT-2, etc.).
 
 <p align="center"><img src="/language_model/document/language_model.example.png" width=600></p>
-<center>*Figure 1: An example of auto-completion powered by language modeling*</center>
+<p align="center">*Figure 1: An example of auto-completion powered by language modeling*</p>
 
 ## Setting
 * Python 3.6.6
@@ -55,7 +55,7 @@ tensorboard --logdir=output
 
 ## Model
 ### Bi-directional Language Model (biLM)
-Given a sequence, the bi-directional language model computes the probability of the sequence forward,  
+Given a sequence, the bi-directional language model computes the probability of the sequence forward,
 <p align="center"><img src="/language_model/document/bilm.eqn.fwd.gif" width=300, align="center"></p>
 <!-- p \left ( t_{1}, t_{2}, ..., t_{N} \right ) = \prod_{k=1}^{N} p \left ( t_{k} | t_{1}, t_{2}, ..., t_{k-1} \right ) -->
 then it runs over the sequence in reverse order to compute the probability of the sequence,
@@ -63,8 +63,7 @@ then it runs over the sequence in reverse order to compute the probability of th
 <!-- p \left ( t_{1}, t_{2}, ..., t_{N} \right ) = \prod_{k=1}^{N} p \left ( t_{k} | t_{k+1}, t_{k+2}, ..., t_{N} \right ) -->
 the sequence first goes through a shared embedding layer, then is modeled by multi-layer RNN (e.g. LSTM, GRU, etc.) in both directions and finally softmax normalization is applied to get probabilities,
 <p align="center"><img src="/language_model/document/bilm.architecture.png" width=500></p>
-<center>*Figure 2: bi-directional language model architecture*</center>
-<center>image source: [Generalized Language Models](https://lilianweng.github.io/lil-log/2019/01/31/generalized-language-models.html)</center><br />
+<p align="center">*Figure 2: bi-directional language model architecture (source: [Generalized Language Models](https://lilianweng.github.io/lil-log/2019/01/31/generalized-language-models.html))*</p>
 the model is trained by jointly minimizing the negative log likelihood of the forward and backward directions,
 <p align="center"><img src="/language_model/document/bilm.eqn.loss.gif" width=600><br /></p>
 <!-- L \left ( \Theta \right ) = - \sum_{k=1}^{N} \left ( log p \left ( t_{k} | t_{1}, t_{2}, ..., t_{k-1} ; \Theta_{e}, \overset{ \rightarrow }{ \Theta }_{RNN}, \Theta_{s} \right ) + log p \left ( t_{k} | t_{k+1}, t_{k+2}, ..., t_{N} ; \Theta_{e}, \overset{ \leftarrow }{ \Theta }_{RNN}, \Theta_{s} \right ) \right ) -->
@@ -72,6 +71,6 @@ the model is trained by jointly minimizing the negative log likelihood of the fo
 ## Reference
 * Matthew E. Peters, Mark Neumann, Mohit Iyyer, Matthew Gardner, Christopher T Clark, Kenton Lee,
 and Luke S. Zettlemoyer. [Deep contextualized word representations](https://arxiv.org/abs/1802.05365) [2018]
-* Alec Radford, Karthik Narasimhan, Tim Salimans and Ilya Sutskever.[Improving language understanding by generative pre-training](https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf) [2018]
+* Alec Radford, Karthik Narasimhan, Tim Salimans and Ilya Sutskever. [Improving language understanding by generative pre-training](https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf) [2018]
 * Jacob Devlin, Ming-Wei Chang, Kenton Lee, and Kristina Toutanova. [BERT: Pre-training of deep bidirectional transformers for language understanding](https://arxiv.org/abs/1810.04805) [2018]
 * Alec Radford, Jeffrey Wu, Rewon Child, David Luan, Dario Amodei and Ilya Sutskever. [Language models are unsupervised multitask learners](https://d4mucfpksywv.cloudfront.net/better-language-models/language-models.pdf) [2019]
